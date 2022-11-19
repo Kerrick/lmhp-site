@@ -3,96 +3,417 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}:focus{outline:0;}body{line-height:1;color:black;background:white;}ol,ul{list-style:none;}table{border-collapse:separate;border-spacing:0;}caption,th,td{text-align:left;font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after{content:"";}blockquote,q{quotes:"" "";}
 
 /* Page Styles */
-html{background:url('./bg.jpg');overflow-y:scroll;}
-body{background:#e4e6d2;background-color:rgba(255,255,255,.8);width:780px;margin:0 auto 20px;font: 14px Arial, Helvetica, sans-serif;line-height:22px;-webkit-box-shadow:0px 0px 10px rgb(63,66,1);border-radius: 0px 0px 8px 8px;-moz-border-radius: 0px 0px 8px 8px;-webkit-border-bottom-right-radius: 8px;-webkit-border-bottom-left-radius: 8px;}
-h1,h2,legend{font:bold 18px Arial, Helvetica, sans-serif;color:#444;text-shadow:0px 1px 3px rgba(34,34,34,.4);}
-h1{font-size:46px;padding:20px 0;text-align:center;}
-h2{margin: 12px 15px 0;}
-.bar{list-style:none;border:1px solid #ccc;color:#888;overflow:hidden;}
-.bar li{float:left;;border-right:1px solid #ccc;height:40px;width:154px;line-height:40px;}
-.bar li:first-child{border-left: 1px solid #ccc;}
-.bar.navigation a{display:block;height:100%;width:100%;text-align:center;color:#888;text-decoration:none;font-size:20px;display:block;width:100%;height:100%;}
-.bar.navigation .item.current {width:156px;}
-.bar.navigation .item.current a{background:#fff;}
-.bar.navigation a:hover,.bar.navigation a:focus{color:#777;text-decoration:underline;background:#fff;}
-.bar.navigation .item.current a:hover{color:#888;text-decoration:none;cursor:default;}
-.content.main{padding: 0 0 12px 0;}
-p{margin: 0 15px 12px;}
-.main.content ul {margin: 0 15px 12px; list-style: disc inside;}
-.rates{width:750px;margin: 0 15px;border:1px solid #ccc;padding:5px;}
-.rates tr:nth-of-type(2n){background:rgba(255,255,255,.8)}
-.rates tr:nth-of-type(2n+1){background:rgba(255,255,255,.4);}
-.rates tr:first-child{background:#fff;}
-.rates th{font-weight:bold;text-align:left;padding:10px;}
-.rates td,.rates tr:first-child th{padding:10px;}
-fieldset{border:1px solid #ccc;margin:0 15px 12px;padding:15px 12px;}
-legend{margin:0 0 0 15px;}
-label,input[type="text"],button,textarea{display:block;font: 14px Arial, Helvetica, sans-serif;line-height:22px;}
-button{margin: 24px 0 0;}
-#botty{display:none;}
-.icon{position:relative;top:4px;}
+html {
+  background: url('./bg.jpg');
+  overflow-y: scroll;
+}
+
+body {
+  background: #e4e6d2;
+  background-color: rgba(255, 255, 255, .8);
+  max-width: 780px;
+  margin: 0 auto 20px;
+  font: 14px Arial, Helvetica, sans-serif;
+  line-height: 22px;
+  -webkit-box-shadow: 0px 0px 10px rgb(63, 66, 1);
+  border-radius: 0px 0px 8px 8px;
+  -moz-border-radius: 0px 0px 8px 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+}
+
+h1,
+h2,
+legend {
+  font: bold 18px Arial, Helvetica, sans-serif;
+  color: #444;
+  text-shadow: 0px 1px 3px rgba(34, 34, 34, .4);
+}
+
+h1 {
+  font-size: 32px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 640px) {
+  h1 {
+    font-size: 46px;
+  }
+}
+
+h2 {
+  margin: 12px 15px 0;
+}
+
+.bar {
+  list-style: none;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  color: #888;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.bar li {
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+@media screen and (min-width: 380px) {
+  .bar { grid-template-columns: repeat(2, 1fr); }
+  .bar li:first-child { grid-column: span 2; }
+}
+
+@media screen and (min-width: 780px) {
+  .bar { grid-template-columns: repeat(5, 1fr); }
+  .bar li:first-child { grid-column: span 1; }
+}
+
+.bar.navigation a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: #888;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bar.navigation .item.current a {
+  background: #fff;
+}
+
+.bar.navigation a:hover,
+.bar.navigation a:focus {
+  color: #777;
+  text-decoration: underline;
+  background: #fff;
+}
+
+.bar.navigation .item.current a:hover {
+  color: #888;
+  text-decoration: none;
+  cursor: default;
+}
+
+.hero {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero.padded {
+  margin: 0 0 1em;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+.content.main {
+  padding: 0 0 12px 0;
+}
+
+p {
+  margin: 0 15px 12px;
+}
+
+.main.content ul {
+  margin: 0 15px 12px;
+  list-style: disc inside;
+}
+
+.main.content small a {
+  background:rgb(63, 66, 1);
+  color: white;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  display: inline-block;
+  text-decoration: none;
+  text-underline-offset: 1px;
+  text-decoration-skip-ink: auto;
+}
+
+.main.content small a:hover,
+.main.content small a:active {
+  text-decoration: underline;
+}
+
+.rates {
+  margin: 0 15px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.rates tr:nth-of-type(2n) {
+  background: rgba(255, 255, 255, .8)
+}
+
+.rates tr:nth-of-type(2n+1) {
+  background: rgba(255, 255, 255, .4);
+}
+
+.rates thead tr:nth-of-type(n) {
+  background: #fff;
+}
+
+.rates th {
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+}
+
+.rates td,
+.rates tr:first-child th {
+  padding: 10px;
+}
+
+@media screen and (max-width: 779px) {
+  .rates, .rates thead, .rates tbody, .rates th, .rates td, .rates tr {
+    display: block;
+  }
+
+  .rates thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+  }
+
+  .rates tbody tr:nth-of-type(n) td, .rates tbody tr th:nth-of-type(n) {
+    position: relative;
+    padding-left: 50%;
+  }
+  
+  .rates tbody tr td:before, .rates tbody tr th:before {
+    position: absolute;
+    top: 0.75em;
+    left: 6px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  .rates#rental-homes tbody tr th:nth-child(1):before { content: "Unit" }
+  .rates#rental-homes tbody tr td:nth-child(2):before { content: "Rooms" }
+  .rates#rental-homes tbody tr td:nth-child(3):before { content: "Max. Occ." }
+  .rates#rental-homes tbody tr td:nth-child(4):before { content: "Rent" }
+  .rates#rental-homes tbody tr td:nth-child(5):before { content: "Deposit**" }
+  .rates#rental-homes tbody tr td:nth-child(6):before { content: "Utilities" }
+  .rates#rental-homes tbody tr td:nth-child(7):before { content: "Vacant" }
+  .rates#mobile-home-spaces tbody tr td:nth-child(1):before { content: "Price" }
+  .rates#mobile-home-spaces tbody tr td:nth-child(2):before { content: "Sec. Deposit" }
+  .rates#mobile-home-spaces tbody tr td:nth-child(3):before { content: "Utilities" }
+  .rates#mobile-home-spaces tbody tr td:nth-child(4):before { content: "Spaces" }
+  .rates#other-rates tbody tr th:nth-child(1):before { content: "Item" }
+  .rates#other-rates tbody tr td:nth-child(2):before { content: "Price" }
+  .rates#rv-rates tbody tr th:nth-child(1):before { content: "Price" }
+  .rates#rv-rates tbody tr td:nth-child(2):before { content: "Utilities" }
+  .rates#rv-rates tbody tr td:nth-child(3):before { content: "Spaces" }
+  .rates#rv-rates tbody tr td:nth-child(4):before { content: "Checkout Time" }
+  .rates#rv-monthly tbody tr th:nth-child(1):before { content: "Price" }
+  .rates#rv-monthly tbody tr td:nth-child(2):before { content: "Sec. Deposit" }
+  .rates#rv-monthly tbody tr td:nth-child(3):before { content: "Utilities" }
+}
+
+@media screen and (min-width: 780px) {
+  .rates { width: 750px; }
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  margin: 0 15px 12px;
+  padding: 15px 12px;
+}
+
+legend {
+  margin: 0 0 0 15px;
+}
+
+label,
+input[type="text"],
+button,
+textarea {
+  display: block;
+  font: 14px Arial, Helvetica, sans-serif;
+  line-height: 22px;
+}
+
+button {
+  margin: 24px 0 0;
+}
+
+#botty {
+  display: none;
+}
+
+.icon {
+  position: relative;
+  top: 4px;
+}
 }
 
 @media print {
-section, table, tr, td, td { page-break-inside: avoid; }
-.navigation { display: none; }
-img { display: none; }
+
+  section,
+  table,
+  tr,
+  td,
+  td {
+    page-break-inside: avoid;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  img {
+    display: none;
+  }
 
 
 
-/* -------------------------------------------------------------- 
+  /* -------------------------------------------------------------- 
   
  Hartija Css Print  Framework - Modified
    * Version:   1.0 
 	 
 -------------------------------------------------------------- */
 
-body { 
-width:100% !important;
-margin:0 !important;
-padding:0 !important;
-line-height: 1.45; 
-font-family: Garamond,"Times New Roman", serif; 
-color: #000; 
-background: none; 
-font-size: 12pt; }
+  body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.45;
+    font-family: Garamond, "Times New Roman", serif;
+    color: #000;
+    background: none;
+    font-size: 12pt;
+  }
 
-/* Headings */
-h1,h2,h3,h4,h5,h6 { page-break-after:avoid; }
-h1{font-size:19pt;}
-h2{font-size:17pt;}
-h3{font-size:15pt;}
-h4,h5,h6{font-size:14pt;}
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+  }
+
+  h1 {
+    font-size: 19pt;
+  }
+
+  h2 {
+    font-size: 17pt;
+  }
+
+  h3 {
+    font-size: 15pt;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 14pt;
+  }
 
 
-p, h2, h3 { orphans: 3; widows: 3; }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
 
-hr { background-color: #ccc; }
+  hr {
+    background-color: #ccc;
+  }
 
-/* Links */
-a:link, a:visited { background: transparent; font-weight: 700; text-decoration: underline;color:#333; }
-a:link[href^="http://"]:after, a[href^="http://"]:visited:after { content: " (" attr(href) ") "; font-size: 90%; }
+  /* Links */
+  a:link,
+  a:visited {
+    background: transparent;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #333;
+  }
 
-abbr[title]:after { content: " (" attr(title) ")"; }
+  a:link[href^="http://"]:after,
+  a[href^="http://"]:visited:after {
+    content: " (" attr(href) ") ";
+    font-size: 90%;
+  }
 
-/* Don't show linked images  */
-a[href^="http://"] {color:#000; }
-a[href$=".jpg"]:after, a[href$=".jpeg"]:after, a[href$=".gif"]:after, a[href$=".png"]:after { content: " (" attr(href) ") "; display:none; }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
 
-/* Don't show links that are fragment identifiers, or use the `javascript:` pseudo protocol .. taken from html5boilerplate */
-a[href^="#"]:after, a[href^="javascript:"]:after {content: "";}
+  /* Don't show linked images  */
+  a[href^="http://"] {
+    color: #000;
+  }
 
-/* Table */
-table { margin: 1px; text-align:left; }
-th { border-bottom: 1px solid #333;  font-weight: bold; }
-td { border-bottom: 1px solid #333; }
-th,td { padding: 4px 10px 4px 0; }
-tfoot { font-style: italic; }
-caption { background: #fff; margin-bottom:2em; text-align:left; }
-thead {display: table-header-group;}
-img,tr {page-break-inside: avoid;} 
+  a[href$=".jpg"]:after,
+  a[href$=".jpeg"]:after,
+  a[href$=".gif"]:after,
+  a[href$=".png"]:after {
+    content: " (" attr(href) ") ";
+    display: none;
+  }
 
-/* Hide various parts from the site
+  /* Don't show links that are fragment identifiers, or use the `javascript:` pseudo protocol .. taken from html5boilerplate */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  /* Table */
+  table {
+    margin: 1px;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+  }
+
+  td {
+    border-bottom: 1px solid #333;
+  }
+
+  th,
+  td {
+    padding: 4px 10px 4px 0;
+  }
+
+  tfoot {
+    font-style: italic;
+  }
+
+  caption {
+    background: #fff;
+    margin-bottom: 2em;
+    text-align: left;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  img,
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Hide various parts from the site
 #header, #footer, #navigation, #rightSideBar, #leftSideBar 
 {display:none;}
 */
